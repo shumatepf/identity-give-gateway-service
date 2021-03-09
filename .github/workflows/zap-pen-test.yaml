@@ -11,4 +11,4 @@ jobs:
       - name: ZAP Scan
         uses: zaproxy/action-full-scan@v0.2.0
         with:
-          target: "https://give-dev.app.cloud.gov"
+          target: "https://give-dev.app.cloud.gov/ipp/enrollment"
