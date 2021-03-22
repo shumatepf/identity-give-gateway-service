@@ -1,6 +1,6 @@
 ---
 applications:
-  - name: api-gateway
+  - name: api-gateway-test-pfs
     stack: cflinuxfs3
     instances: ((instances))
     memory: ((memory))
@@ -9,9 +9,9 @@ applications:
       - https://github.com/cloudfoundry/binary-buildpack
     command: ./run.sh
     services:
-      - api-gateway-db
+      - api-gateway-db-test-pfs
     routes:
-      - route: give-((environment)).app.cloud.gov
+      - route: give-((environment))-test-pfs.app.cloud.gov
     env:
       KONG_DATABASE: postgres
       KONG_PROXY_LISTEN: 0.0.0.0:8080

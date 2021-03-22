@@ -28,7 +28,7 @@ jobs:
           cf target -o ${{ secrets.CF_ORG }} -s give-dev
 
       - name: Ensure DB Available
-        run: .cloud-gov/ensure_db_available.sh api-gateway-db
+        run: .cloud-gov/ensure_db_available.sh api-gateway-db-test-pfs
 
       - name: Deploy application
         run: |
