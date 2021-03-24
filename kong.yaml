@@ -22,6 +22,11 @@ services:
         strip_path: true
         https_redirect_status_code: 426
 plugins:
+  - name: request-transformer
+    config: 
+        remove:
+          headers:
+            - Max-Forwards
   - name: oauth2
     config:
       accept_http_if_already_terminated: true
