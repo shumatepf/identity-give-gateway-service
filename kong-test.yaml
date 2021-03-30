@@ -2,7 +2,7 @@
 _format_version: "1.1"
 services:
   - connect_timeout: 60000
-    url: http://identity-give-ipp.apps.internal:8080
+    url: http://identity-give-idemia-test.apps.internal:8080
     name: idemia-microservice
     read_timeout: 60000
     retries: 5
@@ -11,9 +11,10 @@ services:
       - name: idemia-route
         methods:
           - GET
+          - OPTIONS
           - POST
         paths:
-          - /ipp
+          - /idemia
         path_handling: v0
         preserve_host: false
         protocols:
@@ -22,11 +23,30 @@ services:
         strip_path: true
         https_redirect_status_code: 426
 plugins:
-  - name: request-transformer
-    config: 
-        remove:
-          headers:
-            - Max-Forwards
+  - name: cors
+    config:
+      credentials: false
+      exposed_headers: null
+      headers:
+        - '*'
+      max_age: null
+      methods:
+        - GET
+        - HEAD
+        - PUT
+        - PATCH
+        - POST
+        - DELETE
+        - OPTIONS
+        - TRACE
+        - CONNECT
+      origins:
+        - '*'
+      preflight_continue: false
+    enabled: true
+    protocols:
+      - http
+      - https
   - name: oauth2
     config:
       accept_http_if_already_terminated: true

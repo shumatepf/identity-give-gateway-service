@@ -2,12 +2,12 @@
 applications:
   - name: api-gateway-test-pfs
     stack: cflinuxfs3
-    instances: ((instances))
-    memory: ((memory))
+    instances: ((INSTANCES))
+    memory: ((MEMORY))
     buildpacks:
       - https://github.com/cloudfoundry/apt-buildpack
       - https://github.com/cloudfoundry/binary-buildpack
-    command: ./run.sh
+    command: ./run.sh ((ENVIRONMENT_NAME))
     services:
       - api-gateway-db-test-pfs
     routes:
