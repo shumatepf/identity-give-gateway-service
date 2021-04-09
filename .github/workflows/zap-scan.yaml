@@ -3,11 +3,7 @@
 
 name: Zap-Scan
 
-on:
-  workflow_run:
-    workflows: ["Deploy"]
-    branches: [main]
-    types: [completed]
+on: [pull_request]
 
 jobs:
   zap_scan:
